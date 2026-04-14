@@ -35,7 +35,7 @@ async function updateModel() {
         document.getElementById("sizeResult").innerText = "Out of Range";
         
         const avatar = document.getElementById("avatar");
-        avatar.src = "assets/model.png"; 
+        avatar.src = "model.png"; 
         avatar.style.transform = "scale(1)";
 
         alert("عذراً، المقاس المطلوب Out of Range (خارج النطاق المدعوم حالياً).");
