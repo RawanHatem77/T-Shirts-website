@@ -75,7 +75,7 @@ function applyLanguage(lang) {
     document.querySelectorAll("[data-key]").forEach(el => {
         let key = el.getAttribute("data-key");
 
-        if (!translations[lang][key]) return;
+        if (!translations[lang] || !translations[lang][key]) return;
 
         if (el.tagName === "INPUT") {
             el.placeholder = translations[lang][key];
@@ -94,6 +94,13 @@ function applyLanguage(lang) {
 function setLanguage(lang) {
     localStorage.setItem("lang", lang);
     applyLanguage(lang);
+
+    // sync dropdown if exists
+    let select = document.getElementById("langSelect");
+    if (select) {
+        select.value = lang;
+    }
+
     updateLangButton(lang);
 }
 
@@ -118,9 +125,16 @@ function updateLangButton(lang) {
 }
 
 /* =========================
-   INIT ON LOAD
+   INIT ON LOAD (FORCE ARABIC FIRST)
 ========================= */
 document.addEventListener("DOMContentLoaded", () => {
-    let lang = localStorage.getItem("lang") || "ar";
+    let lang = localStorage.getItem("lang");
+
+    // 🔥 FORCE ARABIC FIRST TIME ONLY
+    if (!lang) {
+        lang = "ar";
+        localStorage.setItem("lang", "ar");
+    }
+
     setLanguage(lang);
 });
