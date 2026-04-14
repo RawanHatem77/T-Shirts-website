@@ -45,7 +45,7 @@ body {
     border-radius: 12px;
 }
 
-/* MODEL */
+/* MODEL BOX (FIX IMPORTANT) */
 .model-box {
     width: 420px;
     height: 620px;
@@ -54,10 +54,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+
+    overflow: visible;   /* 🔥 مهم جدًا */
 }
 
+/* IMAGE */
 #avatar {
     width: 200px;
-    transition: 0.3s ease;
+    transition: transform 0.5s ease;
+    transform-origin: center center;
 }
