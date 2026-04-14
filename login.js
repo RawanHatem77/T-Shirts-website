@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         try {
-            const response = await fetch('http://smartsizeecommerce.runasp.net/api/Auth/login', {
+            const response = await fetch('https://smartsizeecommerce.runasp.net/api/Auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
