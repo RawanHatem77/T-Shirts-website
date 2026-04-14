@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             // ملاحظة: جربي إضافة s لـ https إذا دعمت الاستضافة ذلك
-            const response = await fetch('http://smartsizeecommerce.runasp.net/api/Auth/register', {
+            const response = await fetch('https://smartsizeecommerce.runasp.net/api/Auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
