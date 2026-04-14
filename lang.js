@@ -89,12 +89,12 @@ function applyLanguage(lang) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    let lang = localStorage.getItem("lang") || "en";
+    let lang = localStorage.getItem("lang") || "ar";
     applyLanguage(lang);
 });
 
 function toggleLanguage() {
-    let currentLang = localStorage.getItem("lang") || "en";
+    let currentLang = localStorage.getItem("lang") || "ar";
     let newLang = currentLang === "en" ? "ar" : "en";
 
     setLanguage(newLang);
