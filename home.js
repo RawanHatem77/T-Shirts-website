@@ -1,43 +1,40 @@
-async function updateModel() {
+function updateModel() {
+
     let height = parseFloat(document.getElementById("height").value);
     let weight = parseFloat(document.getElementById("weight").value);
 
     if (!height || !weight) {
-        alert("برجاء إدخال الطول والوزن");
+        alert("Enter values");
         return;
     }
 
-    try {
-        const response = await fetch(
-            `https://smartsizeecommerce.runasp.net/api/SizeCalculator/calculate?height=${height}&weight=${weight}`
-        );
+    let size = "out of range";
 
-        const avatar = document.getElementById("avatar");
-
-        if (response.ok) {
-            const data = await response.json();
-
-            document.getElementById("sizeResult").innerText = data.sizeName;
-
-            avatar.src = data.modelImageUrl;
-
-            let scale = 1;
-
-            if (data.sizeName === "2XL") scale = 1.15;
-            else if (data.sizeName === "XL") scale = 1.08;
-            else if (data.sizeName === "S") scale = 0.85;
-
-            avatar.style.transform = `scale(${scale})`;
-
-        } else {
-            document.getElementById("sizeResult").innerText = "Out of Range";
-
-            avatar.src = "model.png";
-            avatar.style.transform = "scale(1)";
-        }
-
-    } catch (error) {
-        console.error(error);
-        alert("Error connecting to server");
+    // S
+    if (height >= 160 && height <= 165 && weight >= 55 && weight <= 60) {
+        size = "S";
     }
+    // M
+    else if (height >= 160 && height <= 165 && weight > 60 && weight <= 65) {
+        size = "M";
+    }
+    // L
+    else if (height >= 166 && height <= 170 && weight >= 66 && weight <= 70) {
+        size = "L";
+    }
+    // XL
+    else if (height >= 171 && height <= 175 && weight >= 71 && weight <= 75) {
+        size = "XL";
+    }
+    // 2XL
+    else if (height >= 176 && height <= 180 && weight >= 76 && weight <= 80) {
+        size = "2XL";
+    }
+
+    document.getElementById("sizeResult").innerText = size;
+
+    let avatar = document.getElementById("avatar");
+
+    let scale = (height / 170 + weight / 70) / 2;
+    avatar.style.transform = `scale(${scale})`;
 }
