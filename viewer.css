@@ -1,0 +1,35 @@
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    text-align: center;
+    background: linear-gradient(135deg, #0A1F44, #1E3A8A);
+}
+
+h1 {
+    font-size: 40px;
+}
+
+p {
+    max-width: 600px;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+a {
+    margin-top: 30px;
+    padding: 15px 30px;
+    background: white;
+    color: #0A1F44;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    transform: scale(1.1);
+}

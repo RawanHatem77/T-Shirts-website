@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up</title>
+
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="buttons.css">
+<link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<select class="lang-switch" onchange="setLanguage(this.value)">
+    <option value="ar">AR</option>
+    <option value="en">EN</option>
+</select>
+
+<div class="form-box">
+
+<h2 data-key="signupTitle">Create Account</h2>
+
+<input type="email" id="email" data-key="email" placeholder="Email">
+<input type="text" id="phone" data-key="phone" placeholder="Phone"> 
+<input type="text" id="fullname" data-key="username" placeholder="Username">
+<input type="password" id="password" data-key="password" placeholder="Password">
+
+<button class="btn primary signup-btn" data-key="signup">Sign Up</button>
+
+<a href="login.html" data-key="already">Already have account?</a>
+
+</div>
+
+<script src="lang.js"></script>
+<script src="signup.js"></script>
+
+</body>
+</html>

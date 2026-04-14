@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    color: white;
+}
+
+/* TITLE */
+.title {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+/* LAYOUT */
+.layout {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    margin-top: 40px;
+    align-items: center;
+}
+
+/* INPUTS */
+.inputs {
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 20px;
+    width: 320px;
+}
+
+.inputs input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.inputs button {
+    width: 100%;
+    padding: 15px;
+    background: #0A1F44;
+    color: white;
+    border: none;
+    border-radius: 12px;
+}
+
+/* MODEL */
+.model-box {
+    width: 420px;
+    height: 620px;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#avatar {
+    width: 200px;
+    transition: 0.3s ease;
+}

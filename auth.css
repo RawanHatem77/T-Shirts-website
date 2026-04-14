@@ -1,0 +1,48 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0A1F44, #1E3A8A);
+}
+
+/* BOX */
+.form-box {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    width: 350px;
+    text-align: center;
+    animation: popIn 0.6s ease;
+}
+
+/* INPUTS */
+.form-box input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+/* BUTTON */
+.form-box button {
+    width: 100%;
+    padding: 15px;
+    background: #0A1F44;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-box button:hover {
+    transform: scale(1.05);
+}
+
+/* animation */
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}

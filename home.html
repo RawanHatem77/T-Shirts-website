@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Find Size</title>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="buttons.css">
+<link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<h1 class="title">Find Your Perfect Size</h1>
+
+<div class="layout">
+
+<!-- INPUT -->
+<div class="inputs">
+
+<label>Height (cm)</label>
+<input type="number" id="height">
+
+<label>Weight (kg)</label>
+<input type="number" id="weight">
+
+<button class="btn primary" onclick="updateModel()">Calculate</button>
+
+<div>
+<p>Your Size: <span id="sizeResult">-</span></p>
+</div>
+
+</div>
+
+<!-- MODEL -->
+<div class="model-box">
+<img id="avatar" src="assets/model.png">
+</div>
+
+</div>
+
+<script src="home.js"></script>
+
+</body>
+</html>

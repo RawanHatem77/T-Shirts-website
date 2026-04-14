@@ -1,0 +1,56 @@
+.btn {
+    padding: 15px 35px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* hover animation */
+.btn:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+/* click animation */
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* glow ripple effect */
+.btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.35);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+.btn:hover::after {
+    width: 220px;
+    height: 220px;
+}
+
+/* variants */
+.primary {
+    background: white;
+    color: #0A1F44;
+}
+
+.outline {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.ghost {
+    background: transparent;
+    color: white;
+}
