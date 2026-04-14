@@ -45,17 +45,18 @@ body {
     border-radius: 12px;
 }
 
-/* MODEL BOX (FIX IMPORTANT) */
+/* MODEL BOX (IMPORTANT FIX) */
 .model-box {
     width: 420px;
     height: 620px;
     background: white;
     border-radius: 20px;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
-    overflow: visible;   /* 🔥 مهم جدًا */
+    overflow: visible; /* 🔥 مهم جدًا */
 }
 
 /* IMAGE */
