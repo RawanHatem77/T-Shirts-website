@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function toggleLanguage() {
     let currentLang = localStorage.getItem("lang") || "ar";
-    let newLang = currentLang === "en" ? "ar" : "en";
+    let newLang = currentLang === "ar" ? "ar" : "en";
 
     setLanguage(newLang);
     updateLangButton(newLang);
@@ -105,5 +105,5 @@ function updateLangButton(lang) {
     let btn = document.getElementById("langBtn");
     if (!btn) return;
 
-    btn.innerText = (lang === "en") ? "AR" : "EN";
+    btn.innerText = (lang === "ar") ? "AR" : "EN";
 }
