@@ -1,82 +1,81 @@
 const translations = {
     en: {
-      title: "Find Your Perfect T-Shirt Size With 3D Technology",
-      desc: "Enter your height and weight and get instant size prediction.",
-      login: "Login",
-      signup: "Sign Up",
-      guest: "Continue as Guest",
-  
-      loginTitle: "Login",
-      signupTitle: "Create Account",
-  
-      viewerTitle: "Viewer Mode",
-      viewerDesc: "You can explore but cannot calculate sizes.",
+        title: "Find Your Perfect T-Shirt Size With 3D Technology",
+        desc: "Enter your height and weight and get instant size prediction.",
+        login: "Login",
+        signup: "Sign Up",
+        guest: "Continue as Guest",
 
-      back: "Back",
+        loginTitle: "Login",
+        signupTitle: "Create Account",
 
-      pageTitle: "Find Size",
-      hometitle: "Find Your Perfect Size",
+        viewerTitle: "Viewer Mode",
+        viewerDesc: "You can explore but cannot calculate sizes.",
 
-      heightLabel: "Height (cm)",
-      weightLabel: "Weight (kg)",
-      calcBtn: "Calculate",
+        back: "Back",
 
-      yourSize: "Your Size:",
+        pageTitle: "Find Size",
+        hometitle: "Find Your Perfect Size",
 
-      email: "Email",
-      phone: "Phone",
-      username: "Username",
-      password: "Password",
+        heightLabel: "Height (cm)",
+        weightLabel: "Weight (kg)",
+        calcBtn: "Calculate",
 
-      already: "Already have account?",
+        yourSize: "Your Size:",
 
-      createAccount: "Create Account"
+        email: "Email",
+        phone: "Phone",
+        username: "Username",
+        password: "Password",
+
+        already: "Already have account?",
+
+        createAccount: "Create Account"
     },
-  
+
     ar: {
-      title: "اعثر على مقاس التيشيرت المثالي بتقنية ثلاثية الأبعاد",
-      desc: "أدخل الطول والوزن واحصل على المقاس فوراً",
-      login: "تسجيل الدخول",
-      signup: "إنشاء حساب",
-      guest: "الدخول كضيف",
-  
-      loginTitle: "تسجيل الدخول",
-      signupTitle: "إنشاء حساب",
-  
-      viewerTitle: "وضع المشاهدة",
-      viewerDesc: "يمكنك التصفح فقط بدون حساب",
+        title: "اعثر على مقاس التيشيرت المثالي بتقنية ثلاثية الأبعاد",
+        desc: "أدخل الطول والوزن واحصل على المقاس فوراً",
+        login: "تسجيل الدخول",
+        signup: "إنشاء حساب",
+        guest: "الدخول كضيف",
 
-      back: "رجوع",
+        loginTitle: "تسجيل الدخول",
+        signupTitle: "إنشاء حساب",
 
-      pageTitle: "إيجاد المقاس",
-      hometitle: "اعثر على مقاسك المثالي",
+        viewerTitle: "وضع المشاهدة",
+        viewerDesc: "يمكنك التصفح فقط بدون حساب",
 
-      heightLabel: "الطول (سم)",
-      weightLabel: "الوزن (كجم)",
-      calcBtn: "احسب",
+        back: "رجوع",
 
-      yourSize: "المقاس:",
+        pageTitle: "إيجاد المقاس",
+        hometitle: "اعثر على مقاسك المثالي",
 
-      email: "البريد الإلكتروني",
-      phone: "رقم الهاتف",
-      username: "اسم المستخدم",
-      password: "كلمة المرور",
+        heightLabel: "الطول (سم)",
+        weightLabel: "الوزن (كجم)",
+        calcBtn: "احسب",
 
-      already: "لديك حساب بالفعل؟",
+        yourSize: "المقاس:",
 
-      createAccount: "إنشاء حساب"
+        email: "البريد الإلكتروني",
+        phone: "رقم الهاتف",
+        username: "اسم المستخدم",
+        password: "كلمة المرور",
+
+        already: "لديك حساب بالفعل؟",
+
+        createAccount: "إنشاء حساب"
     }
 };
 
-function setLanguage(lang) {
-    localStorage.setItem("lang", lang);
-    applyLanguage(lang);
-}
-
+/* =========================
+   APPLY LANGUAGE
+========================= */
 function applyLanguage(lang) {
-
     document.querySelectorAll("[data-key]").forEach(el => {
         let key = el.getAttribute("data-key");
+
+        if (!translations[lang][key]) return;
 
         if (el.tagName === "INPUT") {
             el.placeholder = translations[lang][key];
@@ -85,25 +84,43 @@ function applyLanguage(lang) {
         }
     });
 
-    document.body.dir = (lang === "ar") ? "rtl" : "ltr";
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    let lang = localStorage.getItem("lang") || "ar";
+/* =========================
+   SET LANGUAGE
+========================= */
+function setLanguage(lang) {
+    localStorage.setItem("lang", lang);
     applyLanguage(lang);
-});
+    updateLangButton(lang);
+}
 
+/* =========================
+   TOGGLE LANGUAGE
+========================= */
 function toggleLanguage() {
     let currentLang = localStorage.getItem("lang") || "ar";
-    let newLang = currentLang === "ar" ? "ar" : "en";
+    let newLang = currentLang === "ar" ? "en" : "ar";
 
     setLanguage(newLang);
-    updateLangButton(newLang);
 }
 
+/* =========================
+   UPDATE BUTTON
+========================= */
 function updateLangButton(lang) {
     let btn = document.getElementById("langBtn");
     if (!btn) return;
 
     btn.innerText = (lang === "ar") ? "AR" : "EN";
 }
+
+/* =========================
+   INIT ON LOAD
+========================= */
+document.addEventListener("DOMContentLoaded", () => {
+    let lang = localStorage.getItem("lang") || "ar";
+    setLanguage(lang);
+});
