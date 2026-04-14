@@ -8,7 +8,7 @@ async function updateModel() {
     }
 
     try {
-       const response = await fetch(`http://smartsizeecommerce.runasp.net/api/SizeCalculator/calculate?height=${height}&weight=${weight}`);
+       const response = await fetch(`https://smartsizeecommerce.runasp.net/api/SizeCalculator/calculate?height=${height}&weight=${weight}`);
 
         if (response.ok) {
             const data = await response.json();
