@@ -92,16 +92,17 @@ function applyLanguage(lang) {
    SET LANGUAGE
 ========================= */
 function setLanguage(lang) {
-    localStorage.setItem("lang", lang);
-    applyLanguage(lang);
+    try {
+        localStorage.setItem("lang", lang);
+        applyLanguage(lang);
 
-    // sync dropdown if exists
-    let select = document.getElementById("langSelect");
-    if (select) {
-        select.value = lang;
+        // 🔥 SAFE: dropdown sync (without breaking page)
+        let select = document.getElementById("langSelect");
+        if (select) select.value = lang;
+
+    } catch (e) {
+        console.error("Language error:", e);
     }
-
-    updateLangButton(lang);
 }
 
 /* =========================
@@ -115,26 +116,20 @@ function toggleLanguage() {
 }
 
 /* =========================
-   UPDATE BUTTON
-========================= */
-function updateLangButton(lang) {
-    let btn = document.getElementById("langBtn");
-    if (!btn) return;
-
-    btn.innerText = (lang === "ar") ? "AR" : "EN";
-}
-
-/* =========================
-   INIT ON LOAD (FORCE ARABIC FIRST)
+   INIT ON LOAD (FORCE ARABIC)
 ========================= */
 document.addEventListener("DOMContentLoaded", () => {
-    let lang = localStorage.getItem("lang");
+    try {
+        let lang = localStorage.getItem("lang");
 
-    // 🔥 FORCE ARABIC FIRST TIME ONLY
-    if (!lang) {
-        lang = "ar";
-        localStorage.setItem("lang", "ar");
+        if (!lang) {
+            lang = "ar";
+            localStorage.setItem("lang", "ar");
+        }
+
+        setLanguage(lang);
+
+    } catch (e) {
+        console.error("Init error:", e);
     }
-
-    setLanguage(lang);
 });
