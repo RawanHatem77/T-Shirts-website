@@ -8,7 +8,7 @@ function updateModel() {
         return;
     }
 
-    let size = "out of range";
+    let size = "Out of range";
 
     // S
     if (height >= 160 && height <= 165 && weight >= 55 && weight <= 60) {
@@ -35,6 +35,12 @@ function updateModel() {
 
     let avatar = document.getElementById("avatar");
 
+    // 🎯 scaling calculation (safe range)
     let scale = (height / 170 + weight / 70) / 2;
+
+    // prevent weird values
+    scale = Math.max(0.8, Math.min(scale, 1.3));
+
     avatar.style.transform = `scale(${scale})`;
+    avatar.style.transition = "0.5s ease";
 }
