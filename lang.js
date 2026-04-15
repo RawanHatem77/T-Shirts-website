@@ -92,44 +92,19 @@ function applyLanguage(lang) {
    SET LANGUAGE
 ========================= */
 function setLanguage(lang) {
-    try {
-        localStorage.setItem("lang", lang);
-        applyLanguage(lang);
+    localStorage.setItem("lang", lang);
+    applyLanguage(lang);
 
-        // 🔥 SAFE: dropdown sync (without breaking page)
-        let select = document.getElementById("langSelect");
-        if (select) select.value = lang;
-
-    } catch (e) {
-        console.error("Language error:", e);
-    }
+    const select = document.getElementById("langSelect");
+    if (select) select.value = lang;
 }
 
 /* =========================
-   TOGGLE LANGUAGE
-========================= */
-function toggleLanguage() {
-    let currentLang = localStorage.getItem("lang") || "ar";
-    let newLang = currentLang === "ar" ? "en" : "ar";
-
-    setLanguage(newLang);
-}
-
-/* =========================
-   INIT ON LOAD (FORCE ARABIC)
+   INIT (FIXED FOR GITHUB PAGES)
 ========================= */
 document.addEventListener("DOMContentLoaded", () => {
-    try {
-        let lang = localStorage.getItem("lang");
+    const savedLang = localStorage.getItem("lang");
+    const lang = savedLang || "ar";
 
-        if (!lang) {
-            lang = "ar";
-            localStorage.setItem("lang", "ar");
-        }
-
-        setLanguage(lang);
-
-    } catch (e) {
-        console.error("Init error:", e);
-    }
+    setLanguage(lang);
 });
